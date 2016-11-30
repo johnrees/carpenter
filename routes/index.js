@@ -14,8 +14,8 @@ var svgWrapper = function(paths) {
   return svgFile;
 }
 
-router.get('/save', function(req, res, next) {
-  fs.writeFile("test", svgWrapper(framebuilder.build(req.param.width, req.param.height)), function(err) {
+router.get('/save/:width/:height', function(req, res, next) {
+  fs.writeFile("test", svgWrapper(framebuilder.build(req.params.width, req.params.height)), function(err) {
     if(err) {
       return console.log(err);
     }
